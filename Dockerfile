@@ -1,7 +1,5 @@
-FROM php:8.2-cli
+FROM php:8.2-apache
 
-WORKDIR /app
+COPY . /var/www/html/
 
-COPY . /app
-
-CMD php -S 0.0.0.0:$PORT
+EXPOSE 80
