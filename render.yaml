@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: tataplay
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
