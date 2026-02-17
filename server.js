@@ -9,7 +9,15 @@ http.createServer((req, res) => {
 
   if (req.url === "/playlist.php" || req.url === "/playlist") {
 
-    https.get(PLAYLIST_URL, (response) => {
+    const options = {
+      headers: {
+        "User-Agent": "Mozilla/5.0",
+        "Accept": "*/*",
+        "Connection": "keep-alive"
+      }
+    };
+
+    https.get(PLAYLIST_URL, options, (response) => {
 
       let data = "";
 
@@ -31,7 +39,7 @@ http.createServer((req, res) => {
     }).on("error", (err) => {
 
       res.writeHead(500);
-      res.end("Error loading playlist");
+      res.end("Error loading playlist: " + err.message);
 
     });
 
